@@ -35,6 +35,7 @@ class $modify(SongELL, EditLevelLayer) {
         menu->setContentSize({0, 0});
         menu->setScale(0.5);
         menu->setPosition({position.x + 66, position.y + 5});
+        menu->setID("level-song-menu");
 
         this->addChild(menu);
         
