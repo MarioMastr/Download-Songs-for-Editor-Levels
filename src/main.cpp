@@ -7,10 +7,6 @@ using namespace geode::prelude;
 #include "songpopup.hpp"
 
 class $modify(SongELL, EditLevelLayer) {
-    void onSongButton(CCObject* sender) {
-        SongPopup::create(this->m_level)->show();
-    }
-
     static void onModify(auto& self) {
         if (Loader::get()->getLoadedMod("mariomastr.progress_of_editor_levels")) {
             if (!self.setHookPriorityAfterPost("EditLevelLayer::init", "mariomastr.progress_of_editor_levels")) {
@@ -26,18 +22,29 @@ class $modify(SongELL, EditLevelLayer) {
         NodeIDs::provideFor(this);
 
         CCNode *levelSong = this->getChildByID("level-song");
-        CCPoint position = levelSong->getPosition();
+        CCNode *songText = levelSong->getChildByIndex(1);
+        CCPoint position = songText->getPosition();
 
-        CCSprite *info = CCSprite::createWithSpriteFrameName("GJ_infoIcon_001.png");
-        CCMenuItemSpriteExtra *levelSongButton = CCMenuItemSpriteExtra::create(info, this, menu_selector(SongELL::onSongButton));
+        CCMenuItemSpriteExtra *levelSongButton = CCMenuItemExt::createSpriteExtraWithFrameName(
+            "GJ_infoIcon_001.png",
+            1.0f,
+            [level](CCMenuItemSpriteExtra *btn) {
+                SongPopup::create(level)->show();
+            }
+        );
 
-        CCMenu *menu = CCMenu::createWithItem(levelSongButton);
-        menu->setContentSize({0, 0});
-        menu->setScale(0.5);
-        menu->setPosition({position.x + 66, position.y + 5});
-        menu->setID("level-song-menu");
+        CCMenu *levelSongMenu = CCMenu::createWithItem(levelSongButton);
 
-        this->addChild(menu);
+        float xOffset = ((songText->getContentWidth() / 2) * songText->getScale()) + 5;
+        float xPosition = position.x + xOffset;
+        float yPosition = position.y + 6;
+
+        levelSongMenu->setContentSize({0, 0});
+        levelSongMenu->setScale(0.5);
+        levelSongMenu->setPosition({xPosition, yPosition});
+        levelSongMenu->setID("level-song-menu");
+
+        levelSong->addChild(levelSongMenu);
         
         return true;
     }

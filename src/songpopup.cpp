@@ -7,12 +7,12 @@ void SongPopup::onClose(CCObject*) {
 }
 
 bool SongPopup::init(GJGameLevel *level) {
-    CCSize m_size = CCSize{ 300, 90 };
+    CCSize m_size = {300, 90};
     CCTouchDispatcher::get()->registerForcePrio(this, 2);
 
     if (!this->initWithColor({ 0, 0, 0, 105 })) return false;
     
-    auto winSize = CCDirector::get()->getWinSize();
+    CCSize winSize = CCDirector::get()->getWinSize();
 
     m_mainLayer = CCLayer::create();
     this->addChild(m_mainLayer);
@@ -46,11 +46,13 @@ bool SongPopup::init(GJGameLevel *level) {
             ->add(songWidget)
     );
 
-    this->setTouchEnabled(true);
-
-    auto m_closeBtn = CCMenuItemExt::createSpriteExtraWithFrameName("GJ_closeBtn_001.png", 0.8f, [this](auto btn) {
-        this->onClose(btn);
-    });
+    CCMenuItemSpriteExtra *m_closeBtn = CCMenuItemExt::createSpriteExtraWithFrameName(
+        "GJ_closeBtn_001.png",
+        0.8f,
+        [this](CCMenuItemSpriteExtra *btn) {
+            this->onClose(btn);
+        }
+    );
     m_buttonMenu->addChildAtPosition(m_closeBtn, geode::Anchor::TopRight, { 3.f, -3.f });
 
     this->setKeypadEnabled(true);
