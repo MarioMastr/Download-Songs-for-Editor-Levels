@@ -1,3 +1,8 @@
+![Mod Version](https://api.geode-sdk.org/v1/mods/supermariomastr.download-songs-for-editor-levels/status_badge?stat=version)
+![Downloads](https://api.geode-sdk.org/v1/mods/supermariomastr.download-songs-for-editor-levels/status_badge?stat=downloads)
+![GD Version](https://api.geode-sdk.org/v1/mods/supermariomastr.download-songs-for-editor-levels/status_badge?stat=gd_version)
+![Geode Version](https://api.geode-sdk.org/v1/mods/supermariomastr.download-songs-for-editor-levels/status_badge?stat=geode_version)
+
 # Download Songs for Editor Levels
 
 Adds the song widget from the main levels menu to the editor levels menu by way of a little button next to the song text. 
