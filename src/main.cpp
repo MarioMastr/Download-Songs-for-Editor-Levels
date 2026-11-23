@@ -1,15 +1,14 @@
 #include <Geode/Geode.hpp>
-
 using namespace geode::prelude;
 
 #include <Geode/modify/EditLevelLayer.hpp>
 
-#include "songpopup.hpp"
+#include "SongPopup.hpp"
 
 class $modify(SongELL, EditLevelLayer) {
     static void onModify(auto& self) {
-        if (Loader::get()->getLoadedMod("mariomastr.progress_of_editor_levels")) {
-            if (!self.setHookPriorityAfterPost("EditLevelLayer::init", "mariomastr.progress_of_editor_levels")) {
+        if (Loader::get()->getLoadedMod("supermariomastr.progress_of_editor_levels")) {
+            if (!self.setHookPriorityAfterPost("EditLevelLayer::init", "supermariomastr.progress_of_editor_levels")) {
                 geode::log::warn("Failed to set hook priority.");
             }
         }
