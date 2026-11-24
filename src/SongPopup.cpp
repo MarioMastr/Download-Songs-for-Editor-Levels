@@ -51,7 +51,7 @@ bool SongPopup::init(GJGameLevel *level) {
 			this->onClose(btn);
 		}
 	);
-	m_buttonMenu->addChildAtPosition(m_closeBtn, geode::Anchor::TopRight, { 3.f, -3.f });
+	m_buttonMenu->addChildAtPosition(m_closeBtn, geode::Anchor::BottomLeft);
 
 	this->setKeypadEnabled(true);
 	this->setTouchEnabled(true);

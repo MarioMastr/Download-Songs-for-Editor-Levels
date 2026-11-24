@@ -3,7 +3,7 @@
 #include <Geode/Geode.hpp>
 using namespace geode::prelude;
 
-class SongPopup : public FLAlertLayer, public FLAlertLayerProtocol {
+class SongPopup : public geode::Popup {
 protected:
     bool init(GJGameLevel *level);
     void onClose(CCObject*);
