@@ -1,5 +1,5 @@
 {
-	"geode": "6.0.0-beta.3",
+	"geode": "6.0.0",
 	"gd": {
 		"win": "2.2091",
 		"android": "2.2091",
@@ -12,7 +12,7 @@
 	"developer": "SuperMarioMastr",
 	"description": "Adds a small button to allow downloading and modifying songs in EditLevelLayer.",
     "dependencies": {
-        "geode.node-ids": ">=v1.24.0-beta.1"
+        "geode.node-ids": ">=v1.24.0"
     },
     "tags": ["utility"],
     "resources": {
